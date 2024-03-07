@@ -1,0 +1,26 @@
+<html>
+    <body>
+        <button type="button" id="button1">Have cookies set</button>
+        <div id="setReport"></div>
+        <button type="button" id="button2">See which ones get sent</button>
+        <div id="sentReport"></div>
+        <script>
+document.addEventListener("DOMContentLoaded", ()=> {
+    const button1 = document.getElementById("button1")
+    const button2 = document.getElementById("button2")
+    const setReport = document.getElementById("setReport")
+    const getReport = document.getElementById("getReport")
+    button1.addEventListener("click", async ()=>{
+      const response = await fetch("https://back.cookietest27.onrender.com/set", {credentials: 'include'})
+      const data = await response.text()
+      setReport.textContent = data
+    })
+    button1.addEventListener("click", async ()=>{
+        response = await fetch("https://back.cookietest27.onrender.com/get", {credentials: 'include'})
+        const data = await response.text()
+        sentReport.textContent = data
+    })
+})
+        </script>
+    </body>
+</html>
